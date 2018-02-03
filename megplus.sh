@@ -51,13 +51,15 @@ echo
 if [[ $1 == '-x' ]] && [[ $2 != '' ]]; then
 	printf "${GREEN}[+]${END} Fetching all in-scope targets.\\n"
 	php fetch.php $2 > temp
-	cat temp | sed -r 's#https?://##I' | sed -r 's#/.*##' | sed -r 's#^\*\.?##' | sed -r 's#,#\n#g' | tr '[:upper:]' '[:lower:]' | uniq | sed -e 's/^/https:\/\//' > domains
+	cat $1 | sed -r 's#https?://##I' | sed -r 's#/.*##' | sed -r 's#^\*\.?##' | sed -r 's#,#\n#g' | tr '[:upper:]' '[:lower:]' | uniq | sed -e 's/^/https:\/\//' > "$1-plus"
 	gio trash temp
-	$1="domains"
+else
+	cat $1 | sed -r 's#https?://##I' | sed -r 's#/.*##' | sed -r 's#^\*\.?##' | sed -r 's#,#\n#g' | tr '[:upper:]' '[:lower:]' | uniq | sed -e 's/^/https:\/\//' > "$1-plus"
+targets="$1-plus"
 fi
 
 printf "${GREEN}[+]${END} Finding configuration files.\\n"
-meg --delay 100 lists/configfiles $1 &>/dev/null
+meg --delay 100 lists/configfiles $targets &>/dev/null
 grep -Hnri "200 ok" out/
 echo
 
@@ -66,21 +68,21 @@ printf "${GREEN}[+]${END} Finding interesting strings.\\n"
 echo
 
 printf "${GREEN}[+]${END} Finding open redirects.\\n"
-meg --delay 100 lists/openredirects $1 &>/dev/null
+meg --delay 100 lists/openredirects $targets &>/dev/null
 grep --color -HnriE '< location: (https?:)?[/\\]{2,}example.com' out/
 echo
 
 printf "${GREEN}[+]${END} Finding CRLF injection.\\n"
-meg --delay 100 lists/crlfinjection $1 &>/dev/null
+meg --delay 100 lists/crlfinjection $targets &>/dev/null
 grep --color -HnriE "< Set-Cookie: ?crlf"
 echo
 
 printf "${GREEN}[+]${END} Finding CORS misconfigurations.\\n"
-./cors.sh $1
+./cors.sh $targets
 echo
 
 printf "${GREEN}[+]${END} Finding path-based XSS.\\n"
-meg /bounty%3c%22pls $1
+meg /bounty%3c%22pls $targets
 grep --color -Hrie '(bounty<|"pls)' out/
 echo
 
@@ -89,7 +91,7 @@ printf "${GREEN}[+]${END} Searching for (sub)domain takeovers.\\n"
 echo
 
 printf "${GREEN}[+]${END} Running waybackurls.\\n"
-cat $1 | waybackurls > out/urls
+cat $targets | waybackurls > out/urls
 printf "${YELLOW}[i]${END} Output in './out/urls' file.\\n"
 echo
 
