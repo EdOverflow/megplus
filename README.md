@@ -1,10 +1,14 @@
 # meg+
 
-Automated reconnaissance wrapper — [TomNomNom's](https://github.com/TomNomNom) meg on steroids.
+Automated reconnaissance wrapper — [TomNomNom's](https://github.com/TomNomNom) [meg](https://github.com/tomnomnom/meg) on steroids.
 
 ![](https://user-images.githubusercontent.com/18099289/35483349-202e7f30-0441-11e8-9f2c-07d27c142839.gif)
 
 Built by [TomNomNom](https://github.com/TomNomNom) and [EdOverflow](https://github.com/EdOverflow).
+
+## About
+
+This wrapper will automate numerous tasks and help you during your reconnaissance process. The script finds common issues, low hanging fruit, and assists you when approaching a target. meg+ also allows you to scan **all** your in-scope targets on HackerOne in one go — it simply retrieves them using a GraphQL query.
 
 ## Installation
 
