@@ -21,7 +21,8 @@ You can either scan a list of hosts or use your HackerOne `X-Auth-Token` token t
 
 ```
 $ ./megplus.sh
-Usage:   ./megplus.sh <list of domains> <H1 X-Auth-Token>
+Usage:   ./megplus.sh <list of domains>
+Usage:   ./megplus.sh -x <H1 X-Auth-Token>
 Example: ./megplus.sh domains
 Example: ./megplus.sh -x XXXXXXXXXXXXXXXX
 ```

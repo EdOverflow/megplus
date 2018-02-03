@@ -7,7 +7,8 @@ CYAN='\033[0;36m'
 END='\033[0m'
 
 if [[ $1 == '' ]] || [[ $1 == '-h' ]] || [[ $1 == '--help' ]]; then
-	echo "Usage:   ./megplus.sh <list of domains> -x <H1 X-Auth-Token>"
+	echo "Usage:   ./megplus.sh <list of domains>"
+	echo "Usage:   ./megplus.sh -x <H1 X-Auth-Token>"
 	echo "Example: ./megplus.sh domains"
 	echo "Example: ./megplus.sh -x XXXXXXXXXXXXXXXX"
 	exit 1
