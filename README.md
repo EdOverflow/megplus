@@ -16,11 +16,15 @@ Watch TomNomNom's talk to learn more about his reconnaissance methodology:
 
 ## Installation
 
-You will need Golang and [PHP](https://user-images.githubusercontent.com/18099289/35768719-daaaf30c-0900-11e8-92ab-bdc2498c80bf.png) to use all the features provided by this tool. On top of that, make sure to install meg, waybackurls, and [gio](http://manpages.ubuntu.com/manpages/artful/man1/gio.1.html).
+You will need Golang and [PHP](https://user-images.githubusercontent.com/18099289/35768719-daaaf30c-0900-11e8-92ab-bdc2498c80bf.png) to use all the features provided by this tool. On top of that, make sure to install meg, waybackurls, [Sublist3r](https://github.com/aboul3la/Sublist3r), and [gio](http://manpages.ubuntu.com/manpages/artful/man1/gio.1.html).
 
 ```
+git clone https://github.com/EdOverflow/megplus.git
+cd megplus
 go get github.com/tomnomnom/meg
 go get github.com/tomnomnom/waybackurls
+git clone https://github.com/aboul3la/Sublist3r.git
+# See https://github.com/aboul3la/Sublist3r#dependencies
 ```
 
 ## Usage
@@ -29,10 +33,13 @@ You can either scan a list of hosts or use your HackerOne `X-Auth-Token` token t
 
 ```
 $ ./megplus.sh
-Usage:   ./megplus.sh <list of domains>
-Usage:   ./megplus.sh -x <H1 X-Auth-Token>
-Example: ./megplus.sh domains
-Example: ./megplus.sh -x XXXXXXXXXXXXXXXX
+1) Usage - target list of domains:        ./megplus.sh <list of domains>
+2) Usage - target all HackerOne programs: ./megplus.sh -x <H1 X-Auth-Token>
+3) Usage - run sublist3r first:           ./megplus.sh -s <single host>
+
+1) Example: ./megplus.sh domains
+2) Example: ./megplus.sh -x XXXXXXXXXXXXXXXX
+3) Example: ./megplus.sh -s example.com
 ```
 
 ## Scanner

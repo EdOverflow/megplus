@@ -7,10 +7,13 @@ CYAN='\033[0;36m'
 END='\033[0m'
 
 if [[ $1 == '' ]] || [[ $1 == '-h' ]] || [[ $1 == '--help' ]]; then
-	echo "Usage:   ./megplus.sh <list of domains>"
-	echo "Usage:   ./megplus.sh -x <H1 X-Auth-Token>"
-	echo "Example: ./megplus.sh domains"
-	echo "Example: ./megplus.sh -x XXXXXXXXXXXXXXXX"
+	echo "1) Usage - target list of domains:        ./megplus.sh <list of domains>"
+	echo "2) Usage - target all HackerOne programs: ./megplus.sh -x <H1 X-Auth-Token>"
+	echo "3) Usage - run Sublist3r first against host:           ./megplus.sh -s <single host>"
+	echo
+	echo "1) Example: ./megplus.sh domains"
+	echo "2) Example: ./megplus.sh -x XXXXXXXXXXXXXXXX"
+	echo "3) Example: ./megplus.sh -s example.com"
 	exit 1
 fi
 
@@ -51,11 +54,19 @@ echo
 if [[ $1 == '-x' ]] && [[ $2 != '' ]]; then
 	printf "${GREEN}[+]${END} Fetching all in-scope targets.\\n"
 	php fetch.php $2 > temp
-	cat $1 | sed -r 's#https?://##I' | sed -r 's#/.*##' | sed -r 's#^\*\.?##' | sed -r 's#,#\n#g' | tr '[:upper:]' '[:lower:]' | uniq | sed -e 's/^/https:\/\//' > "$1-plus"
+	cat $1 | sed -r 's#https?://##I' | sed -r 's#/.*##' | sed -r 's#^\*\.?##' | sed -r 's#,#\n#g' | tr '[:upper:]' '[:lower:]' | uniq | sed -e 's/^/https:\/\//' > domains-plus
+	targets="domains-plus"
 	gio trash temp
+elif [[ $1 == '-s' ]] && [[ $2 != '' ]]; then
+	printf "${GREEN}[+]${END} Running Sublist3r against $2.\\n"
+	# Set Sublist3r path here!
+	python Sublist3r/sublist3r.py -d $2 -o domains-meg
+	cat domains-meg | sed -r 's#https?://##I' | sed -r 's#/.*##' | sed -r 's#^\*\.?##' | sed -r 's#,#\n#g' | tr '[:upper:]' '[:lower:]' | uniq | sed -e 's/^/https:\/\//' > domains-plus
+	targets="domains-plus"
+	echo
 else
 	cat $1 | sed -r 's#https?://##I' | sed -r 's#/.*##' | sed -r 's#^\*\.?##' | sed -r 's#,#\n#g' | tr '[:upper:]' '[:lower:]' | uniq | sed -e 's/^/https:\/\//' > "$1-plus"
-targets="$1-plus"
+	targets="$1-plus"
 fi
 
 printf "${GREEN}[+]${END} Finding configuration files.\\n"
