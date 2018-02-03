@@ -7,8 +7,9 @@ CYAN='\033[0;36m'
 END='\033[0m'
 
 if [[ $1 == '' ]] || [[ $1 == '-h' ]] || [[ $1 == '--help' ]]; then
-	echo "Usage:   ./megplus.sh <list of domains> <H1 X-Auth-Token>"
-	echo "Example: ./megplus.sh domains XXXXXXXXXXXXXXXX"
+	echo "Usage:   ./megplus.sh <list of domains> -x <H1 X-Auth-Token>"
+	echo "Example: ./megplus.sh domains"
+	echo "Example: ./megplus.sh -x XXXXXXXXXXXXXXXX"
 	exit 1
 fi
 
@@ -40,7 +41,7 @@ rand=$[RANDOM % ${#QUOTES[@]}]
 printf "${YELLOW}[i]${END} ${QUOTES[$rand]}\\n"
 echo
 
-if [[ $2 != '' ]]; then
+if [[ $1 == '-x' ]] && [[ $2 != '' ]]; then
 	printf "${GREEN}[+]${END} Fetching all in-scope targets.\\n"
 	php fetch.php $2 > temp
 	cat temp | sed -r 's#https?://##I' | sed -r 's#/.*##' | sed -r 's#^\*\.?##' | sed -r 's#,#\n#g' | tr '[:upper:]' '[:lower:]' | uniq | sed -e 's/^/https:\/\//' > domains

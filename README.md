@@ -17,11 +17,13 @@ go get github.com/tomnomnom/waybackurls
 
 ## Usage
 
+You can either scan a list of hosts or use your HackerOne `X-Auth-Token` token to scan all the bug bounty programs that you participate in.
+
 ```
 $ ./megplus.sh
 Usage:   ./megplus.sh <list of domains> <H1 X-Auth-Token>
 Example: ./megplus.sh domains
-Example: ./megplus.sh domains XXXXXXXXXXXXXXXX
+Example: ./megplus.sh -x XXXXXXXXXXXXXXXX
 ```
 
 # Contributing
