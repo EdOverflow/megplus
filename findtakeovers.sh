@@ -13,6 +13,8 @@ searches=(
     "Your CNAME settings"
     "The resource that you are attempting to access does not exist or you don't have the necessary permissions to view it."
     "Domain mapping upgrade for this domain not found"
+    "The feed has not been found"
+    "This UserVoice subdomain is currently available!"
 )
 
 for str in "${searches[@]}"; do
