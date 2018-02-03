@@ -14,7 +14,7 @@ if [[ $1 == '' ]] || [[ $1 == '-h' ]] || [[ $1 == '--help' ]]; then
 	exit 1
 fi
 
-echo """                                            
+echo -e """${CYAN}                                            
                                                                           
    88888b.d88b.   .d88b.   .d88b.    888   
    888  888  88b d8P  Y8b d88P 88b 8888888 
@@ -22,9 +22,9 @@ echo """
    888  888  888 Y8b.     Y88b 888         
    888  888  888   Y8888    Y88888         
                                888         
-   Automate meg           Y8b d88P
-   By TomNomNom            YYY88P          
-   & EdOverflow
+   ${GREEN}Automate meg${END}           ${CYAN}Y8b d88P${END}
+   ${GREEN}By TomNomNom${END}            ${CYAN}YYY88P${END}          
+   ${GREEN}& EdOverflow${END}
 """
 
 QUOTES=(
