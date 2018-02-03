@@ -19,14 +19,14 @@ function checkacao {
     local url=$1
     local origin=$2
 
-    curl -vs "$url" -H"Origin: $origin" 2>&1 | grep -i "< Access-Control-Allow-Origin: $origin" &> /dev/null
+    curl -vs --max-time 9 "$url" -H"Origin: $origin" 2>&1 | grep -i "< Access-Control-Allow-Origin: $origin" &> /dev/null
 }
 
 function checkacac {
     local url=$1
     local origin=$2
 
-    curl -vs "$url" -H"Origin: $origin" 2>&1 | grep -i "< Access-Control-Allow-Credentials: true" &> /dev/null
+    curl -vs --max-time 9 "$url" -H"Origin: $origin" 2>&1 | grep -i "< Access-Control-Allow-Credentials: true" &> /dev/null
 }
 
 while read url; do
