@@ -36,6 +36,11 @@ QUOTES=(
 	"Sleep is for the weak."
 	"Grab a cuppa!"
 	"meg+, meg on steroids."
+	"I am 100% natural."
+	"A bug is never just a mistake. It represents something bigger. An error of thinking that makes you who you are."
+	"You hack people. I hack time."
+	"I hope you don't screw like you type."
+	"Hack the planet!"
 )
 
 rand=$[RANDOM % ${#QUOTES[@]}]
