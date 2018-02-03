@@ -77,7 +77,7 @@ grep --color -Hrie '(bounty<|"pls)' out/
 echo
 
 printf "${GREEN}[+]${END} Searching for (sub)domain takeovers.\\n"
-#./findtakeovers.sh
+./findtakeovers.sh
 echo
 
 printf "${GREEN}[+]${END} Running waybackurls.\\n"
