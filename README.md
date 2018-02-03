@@ -20,6 +20,7 @@ go get github.com/tomnomnom/waybackurls
 ```
 $ ./megplus.sh
 Usage:   ./megplus.sh <list of domains> <H1 X-Auth-Token>
+Example: ./megplus.sh domains
 Example: ./megplus.sh domains XXXXXXXXXXXXXXXX
 ```
 
