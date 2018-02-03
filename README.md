@@ -45,22 +45,15 @@ $ ./megplus.sh
 ## Scanner
 
 meg+ will scan for the following things:
-
-```
-[+] Finding configuration files.
-
-[+] Finding interesting strings.
-
-[+] Finding open redirects.
-
-[+] Finding CRLF injection.
-
-[+] Finding CORS misconfigurations.
-
-[+] Finding path-based XSS.
-
-[+] Searching for (sub)domain takeovers.
-```
+ 
+- Sudomains using Sublist3r;
+- Configuration files;
+- Interesting strings;
+- Open redirects;
+- CRLF injection;
+- CORS misconfigurations;
+- Path-based XSS;
+- (Sub)domain takeovers.
 
 ## Contributing
 
