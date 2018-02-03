@@ -10,6 +10,10 @@ Built by [TomNomNom](https://github.com/TomNomNom) and [EdOverflow](https://gith
 
 This wrapper will automate numerous tasks and help you during your reconnaissance process. The script finds common issues, low hanging fruit, and assists you when approaching a target. meg+ also allows you to scan **all** your in-scope targets on HackerOne in one go — it simply retrieves them using a GraphQL query.
 
+Watch TomNomNom's talk to learn more about his reconnaissance methodology:
+
+[![](https://i.ytimg.com/vi/DvS_ew77GXA/maxresdefault.jpg)](https://www.youtube.com/watch?v=DvS_ew77GXA)
+
 ## Installation
 
 You will need Golang and [PHP](https://user-images.githubusercontent.com/18099289/35768719-daaaf30c-0900-11e8-92ab-bdc2498c80bf.png) to use all the features provided by this tool. On top of that, make sure to install meg, waybackurls, and [gio](http://manpages.ubuntu.com/manpages/artful/man1/gio.1.html).

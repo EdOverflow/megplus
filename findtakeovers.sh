@@ -1,4 +1,5 @@
 #!/bin/bash
+# Created by TomNomNom
 searches=(
     "There is no app configured at that hostname"
     "NoSuchBucket"
