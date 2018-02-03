@@ -27,7 +27,27 @@ Example: ./megplus.sh domains
 Example: ./megplus.sh -x XXXXXXXXXXXXXXXX
 ```
 
-# Contributing
+## Scanner
+
+meg+ will scan for the following things:
+
+```
+[+] Finding configuration files.
+
+[+] Finding interesting strings.
+
+[+] Finding open redirects.
+
+[+] Finding CRLF injection.
+
+[+] Finding CORS misconfigurations.
+
+[+] Finding path-based XSS.
+
+[+] Searching for (sub)domain takeovers.
+```
+
+## Contributing
 
 I welcome contributions from the public.
 
