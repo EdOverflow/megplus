@@ -8,7 +8,7 @@ Built by [TomNomNom](https://github.com/TomNomNom) and [EdOverflow](https://gith
 
 ## Installation
 
-You will need Golang and PHP to use all the features provided by this tool.
+You will need Golang and [PHP](https://user-images.githubusercontent.com/18099289/35768719-daaaf30c-0900-11e8-92ab-bdc2498c80bf.png) to use all the features provided by this tool. On top of that, make sure to install meg, waybackurls, and [gio](http://manpages.ubuntu.com/manpages/artful/man1/gio.1.html).
 
 ```
 go get github.com/tomnomnom/meg
