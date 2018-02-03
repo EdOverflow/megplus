@@ -14,16 +14,17 @@ if [[ $1 == '' ]] || [[ $1 == '-h' ]] || [[ $1 == '--help' ]]; then
 	exit 1
 fi
 
-echo """        
- #    # ######  ####    #   
- ##  ## #      #    #   #   
- # ## # #####  #      ##### 
- #    # #      #  ###   #   
- #    # #      #    #   #   
- #    # ######  ####        
-                            
-     ~ Automate meg ~
-  By TomNomNom & EdOverflow
+echo """                                            
+                                                                          
+   88888b.d88b.   .d88b.   .d88b.    888   
+   888  888  88b d8P  Y8b d88P 88b 8888888 
+   888  888  888 88888888 888  888   888   
+   888  888  888 Y8b.     Y88b 888         
+   888  888  888   Y8888    Y88888         
+                               888         
+   Automate meg           Y8b d88P
+   By TomNomNom            YYY88P          
+   & EdOverflow
 """
 
 QUOTES=(
