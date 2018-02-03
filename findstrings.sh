@@ -11,6 +11,14 @@ searches=(
     '$2y$'
     '$2b$'
     'secret'
+    'api_key'
+    'api-key'
+    'api_secret_key'
+    'api-secret-key'
+    'secret_key'
+    'secret-key'
+    'private_key'
+    'private-key'
 )
 
 for str in "${searches[@]}"; do
