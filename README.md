@@ -16,7 +16,7 @@ Watch TomNomNom's talk to learn more about his reconnaissance methodology:
 
 ## Installation
 
-You will need Golang and [PHP](https://user-images.githubusercontent.com/18099289/35768719-daaaf30c-0900-11e8-92ab-bdc2498c80bf.png) to use all the features provided by this tool. On top of that, make sure to install meg, waybackurls, [Sublist3r](https://github.com/aboul3la/Sublist3r), and [gio](http://manpages.ubuntu.com/manpages/artful/man1/gio.1.html).
+You will need [Golang](https://golang.org/doc/), Python 2 or 3, and [PHP 7.0](https://user-images.githubusercontent.com/18099289/35768719-daaaf30c-0900-11e8-92ab-bdc2498c80bf.png) to use all the features provided by this tool. On top of that, make sure to install [meg](https://github.com/tomnomnom/meg), [waybackurls](https://github.com/tomnomnom/waybackurls), [Sublist3r](https://github.com/aboul3la/Sublist3r), and [gio](http://manpages.ubuntu.com/manpages/artful/man1/gio.1.html).
 
 ```
 git clone https://github.com/EdOverflow/megplus.git
@@ -41,6 +41,15 @@ $ ./megplus.sh
 2) Example: ./megplus.sh -x XXXXXXXXXXXXXXXX
 3) Example: ./megplus.sh -s example.com
 ```
+
+## Usage - Docker 🐋
+
+If you don't feel like installing all the dependencies mentioned above, you can simply run the `abhartiya/tools_megplus` Docker container, where `test.txt` is a sample file containing the URLs to test against. In your case, this will be the file containing the URLs you want to test:
+
+`docker run -v $(pwd):/megplus abhartiya/tools_megplus test.txt`
+
+The command will run the `abhartiya/tools_megplus` Docker image as a container and mount the `pwd` onto the container as a volume (at `/megplus`), which makes the `test.txt` file available to the container. Once megplus finishes running, the `out` directory will be created in `pwd` with all the results.  
+
 
 ## Scanner
 
