@@ -42,7 +42,7 @@ $ ./megplus.sh
 3) Example: ./megplus.sh -s example.com
 ```
 
-## Usage - Docker
+## Usage - Docker 🐋
 
 If you don't feel like installing all the dependencies mentioned above, you can simply run the `abhartiya/tools_megplus` Docker container, where `test.txt` is a sample file containing the URLs to test against. In your case, this will be the file containing the URLs you want to test:
 
