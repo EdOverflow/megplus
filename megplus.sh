@@ -54,14 +54,19 @@ echo
 if [[ $1 == '-x' ]] && [[ $2 != '' ]]; then
 	printf "${GREEN}[+]${END} Fetching all in-scope targets.\\n"
 	php fetch.php $2 > temp
-	cat $1 | sed -r 's#https?://##I' | sed -r 's#/.*##' | sed -r 's#^\*\.?##' | sed -r 's#,#\n#g' | tr '[:upper:]' '[:lower:]' | uniq | sed -e 's/^/https:\/\//' > domains-plus
+	cat temp | sed -r 's#https?://##I' | sed -r 's#/.*##' | sed -r 's#^\*\.?##' | sed -r 's#,#\n#g' | tr '[:upper:]' '[:lower:]' | uniq | sed -e 's/^/https:\/\//' > domains-plus
 	targets="domains-plus"
 	gio trash temp
 elif [[ $1 == '-s' ]] && [[ $2 != '' ]]; then
 	printf "${GREEN}[+]${END} Running Sublist3r against $2.\\n"
 	# Set Sublist3r path here!
-	python Sublist3r/sublist3r.py -d $2 -o domains-meg
-	cat domains-meg | sed -r 's#https?://##I' | sed -r 's#/.*##' | sed -r 's#^\*\.?##' | sed -r 's#,#\n#g' | tr '[:upper:]' '[:lower:]' | uniq | sed -e 's/^/https:\/\//' > domains-plus
+	python Sublist3r/sublist3r.py -d $2 -o domains-sub > /dev/null
+	while read domain; do 
+		if host "$domain" > /dev/null; then 
+			echo $domain; 
+		fi;
+	done < domains-sub >> output
+	cat output | sed -r 's#https?://##I' | sed -r 's#/.*##' | sed -r 's#^\*\.?##' | sed -r 's#,#\n#g' | tr '[:upper:]' '[:lower:]' | uniq | sed -e 's/^/https:\/\//' > domains-plus
 	targets="domains-plus"
 	echo
 else
@@ -106,6 +111,10 @@ cat $targets | waybackurls > out/urls
 printf "${YELLOW}[i]${END} Output in './out/urls' file.\\n"
 echo
 
+# You can use gvfs-trash too.
+gio trash output
+gio trash domains-plus
+gio trash domains-sub
 printf "${YELLOW}[i]${END} Done scanning -- all output located in ./out.\\n"
 
 echo """
