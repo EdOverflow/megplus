@@ -16,7 +16,7 @@ Watch TomNomNom's talk to learn more about his reconnaissance methodology:
 
 ## Installation
 
-You will need Golang and [PHP](https://user-images.githubusercontent.com/18099289/35768719-daaaf30c-0900-11e8-92ab-bdc2498c80bf.png) to use all the features provided by this tool. On top of that, make sure to install meg, waybackurls, [Sublist3r](https://github.com/aboul3la/Sublist3r), and [gio](http://manpages.ubuntu.com/manpages/artful/man1/gio.1.html).
+You will need Golang and [PHP 7.0](https://user-images.githubusercontent.com/18099289/35768719-daaaf30c-0900-11e8-92ab-bdc2498c80bf.png) to use all the features provided by this tool. On top of that, make sure to install meg, waybackurls, [Sublist3r](https://github.com/aboul3la/Sublist3r), and [gio](http://manpages.ubuntu.com/manpages/artful/man1/gio.1.html).
 
 ```
 git clone https://github.com/EdOverflow/megplus.git
