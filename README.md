@@ -27,6 +27,15 @@ Example: ./megplus.sh domains
 Example: ./megplus.sh -x XXXXXXXXXXXXXXXX
 ```
 
+## Usage - Docker
+
+If you don't feel like installing all the dependencies mentioned above, you can simply run the `abhartiya/tools_megplus` Docker container, where `test.txt` is a sample file containing the URLs to test against. In your case, this will be the file containing the URLs you want to test:
+
+`docker run -v $(pwd):/megplus abhartiya/tools_megplus test.txt`
+
+The command will run the `abhartiya/tools_megplus` Docker image as a container and mount the `pwd` onto the container as a volume (at `/megplus`), which makes the `test.txt` file available to the container. Once megplus finishes running, the `out` directory will be created in `pwd` with all the results.  
+
+
 ## Scanner
 
 meg+ will scan for the following things:
