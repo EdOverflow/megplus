@@ -15,7 +15,7 @@ ENV GOBIN "$GOPATH/bin/"
 
 RUN go get github.com/tomnomnom/meg && go get github.com/tomnomnom/waybackurls
 
-RUN git clone https://github.com/anshumanbh/megplus.git
+RUN git clone https://github.com/EdOverflow/megplus.git
 
 WORKDIR /megplus
 
