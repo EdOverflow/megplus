@@ -83,6 +83,10 @@ printf "${GREEN}[+]${END} Finding interesting strings.\\n"
 ./findstrings.sh out/
 echo
 
+printf "${GREEN}[+]${END} Finding AWS/DigitalOcean/Azure buckets.\\n"
+./findbuckets.sh out/
+echo
+
 printf "${GREEN}[+]${END} Finding open redirects.\\n"
 meg --delay 100 lists/openredirects $targets &>/dev/null
 grep --color -HnriE '< location: (https?:)?[/\\]{2,}example.com' out/
