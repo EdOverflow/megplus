@@ -80,6 +80,6 @@ The bug tracker utilizes several labels to help organize and identify issues.
 
 Use the GitHub issue search — check if the issue has already been reported.
 
-# ⚠ Legal Disclaimer
+## ⚠ Legal Disclaimer
 
 This project is made for educational and ethical testing purposes only. Usage of this tool for attacking targets without prior mutual consent is illegal. Developers assume no liability and are not responsible for any misuse or damage caused by this tool.
