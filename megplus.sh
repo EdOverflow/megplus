@@ -34,17 +34,22 @@ QUOTES=(
 	"Activating 1337 mode!"
 	"Target uses Equifax-grade security."
 	"ᕕ( ᐛ )ᕗ"
+    "ᕕ( ᐕ )ᕗ"
+    "三三ᕕ( ᐛ )ᕗ"
+    "ᐠ( ᐛ )ᐟ"
 	"Never gonna give you up."
 	"Bounty pls."
 	"Update pls."
 	"Sleep is for the weak."
 	"Grab a cuppa!"
 	"meg+, meg on steroids."
-	"I am 100% natural."
+	"I am 100 percent natural."
 	"A bug is never just a mistake. It represents something bigger. An error of thinking that makes you who you are."
 	"You hack people. I hack time."
 	"I hope you don't screw like you type."
 	"Hack the planet!"
+    "Crypto stands for cryptography."
+    "PoC||GTFO"
 )
 
 rand=$[RANDOM % ${#QUOTES[@]}]
