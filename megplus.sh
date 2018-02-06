@@ -56,6 +56,17 @@ rand=$[RANDOM % ${#QUOTES[@]}]
 printf "${YELLOW}[i]${END} ${QUOTES[$rand]}\\n"
 echo
 
+if ! which meg &> /dev/null; then 
+	echo "You need to install meg."
+	echo "Follow the installation instructions found here: https://github.com/tomnomnom/meg#install"
+	exit 1
+fi
+
+if ! which gio &> /dev/null; then 
+	echo "You need to install gio or you can comment out the lines containing the gio command."
+	exit 1
+fi
+
 if [[ $1 == '-x' ]] && [[ $2 != '' ]]; then
 	printf "${GREEN}[+]${END} Fetching all in-scope targets.\\n"
 	php fetch.php $2 > temp
