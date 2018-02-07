@@ -27,6 +27,8 @@ git clone https://github.com/aboul3la/Sublist3r.git
 # See https://github.com/aboul3la/Sublist3r#dependencies
 ```
 
+⚠ If you do not want to use `gio` or do not have `gio` on your machine, just comment out **all** the lines that have `gio` in them! Make sure to also remove the error message located here: https://github.com/EdOverflow/megplus/blob/master/megplus.sh#L65-L68.
+
 ## Usage
 
 You can either scan a list of hosts or use your HackerOne `X-Auth-Token` token to scan all the bug bounty programs that you participate in.
