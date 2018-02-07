@@ -30,7 +30,7 @@ function checkacac {
 }
 
 while read url; do
-    domain=$(echo "$url" | sed -r 's#https?://([^/]*)/?.*#\1#')
+    domain=$(echo "$url" | sed -E 's#https?://([^/]*)/?.*#\1#')
 
     for origin in https://evil.com null https://$domain.evil.com https://${domain}evil.com; do
         if checkacao $url $origin; then
