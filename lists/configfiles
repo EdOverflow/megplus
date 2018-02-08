@@ -21,8 +21,11 @@
 /.htpasswd
 /.jestrc
 /.keys.yml
+/.muttrc
 /.mysql_history
+/.netrc
 /.npmignore
+/.npmrc
 /.pgpass
 /.profile
 /.psql_history
@@ -40,6 +43,7 @@
 /.svn/wc.db
 /.svnignore
 /.swp
+/.travis.composer.config.json
 /.travis.yml
 /.zsh_history
 /.zsh_profile
@@ -54,6 +58,7 @@
 /backup.php
 /backup.txt
 /backup/
+/bower.json
 /build.xml
 /cgi-bin/printenv.pl
 /cgi-bin/status.pl
@@ -61,6 +66,8 @@
 /circle.yml
 /composer.json
 /composer.lock
+/config.gypi
+/config.json
 /CVS/Entries
 /CVS/Root
 /debug.asp
@@ -74,13 +81,15 @@
 /examples/jsp/error/error.html
 /examples/jsp/num/numguess.jsp
 /examples/servlet/HelloWorldExample
+/Gemfile
+/Gemfile.lock
 /gruntfile.coffee
 /Gruntfile.coffee
 /gruntfile.js
 /Gruntfile.js
 /Gulpfile
-/gulpfile.js
 /Gulpfile.js
+/gulpfile.js
 /index.asp
 /index.aspx
 /index.jsp
@@ -102,8 +111,8 @@
 /LICENSE
 /license.md
 /LICENSE.md
-/license.txt
 /LICENSE.txt
+/license.txt
 /Makefile
 /mkdocs.yml
 /nginx_status
@@ -123,8 +132,8 @@
 /README.md
 /readme.mkd
 /README.mkd
-/readme.txt
 /README.txt
+/readme.txt
 /robots.txt
 /s3.yml
 /server-info
@@ -147,6 +156,7 @@
 /tmp.txt
 /tmp/
 /tomcat-docs/appdev/sample/web/hello.jsp
+/travis.yml
 /tsconfig.json
 /web-console/AOPBinding.jsp
 /web-console/applet.jsp
