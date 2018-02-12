@@ -62,17 +62,12 @@ if ! which meg &> /dev/null; then
 	exit 1
 fi
 
-if ! which gio &> /dev/null; then 
-	echo "You need to install gio or you can comment out the lines containing the gio command."
-	exit 1
-fi
-
 if [[ $1 == '-x' ]] && [[ $2 != '' ]]; then
 	printf "${GREEN}[+]${END} Fetching all in-scope targets.\\n"
 	php fetch.php $2 > temp
 	cat temp | sed -E 's#https?://##I' | sed -E 's#/.*##' | sed -E 's#^\*\.?##' | sed -E 's#,#\n#g' | tr '[:upper:]' '[:lower:]' | uniq | sed -e 's/^/https:\/\//' > domains-plus
 	targets="domains-plus"
-	gio trash temp
+	# gio trash temp
 elif [[ $1 == '-s' ]] && [[ $2 != '' ]]; then
 	printf "${GREEN}[+]${END} Running Sublist3r against $2.\\n"
 	# Set Sublist3r path here!
@@ -132,9 +127,9 @@ printf "${YELLOW}[i]${END} Output in './out/urls' file.\\n"
 echo
 
 # You can use gvfs-trash too.
-gio trash output
-gio trash domains-plus
-gio trash domains-sub
+# gio trash output
+# gio trash domains-plus
+# gio trash domains-sub
 printf "${YELLOW}[i]${END} Done scanning -- all output located in ./out.\\n"
 
 echo """
