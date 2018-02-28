@@ -3,7 +3,7 @@ LABEL maintainer="Anshuman Bhartiya"
 
 RUN apt-get update
 
-RUN apt-get install -y libldns-dev git build-essential wget libglib2.0-dev php7.0 python-requests python-dnspython python-argparse
+RUN apt-get install -y libldns-dev git build-essential wget libglib2.0-dev php7.0 python-requests python-dnspython python-argparse bind-utils
 
 RUN wget https://storage.googleapis.com/golang/go1.9.2.linux-amd64.tar.gz && \
     tar xvf go1.9.2.linux-amd64.tar.gz && \
