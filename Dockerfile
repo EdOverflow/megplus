@@ -18,7 +18,7 @@ RUN go get github.com/tomnomnom/meg && go get github.com/tomnomnom/waybackurls
 RUN git clone https://github.com/EdOverflow/megplus.git
 
 WORKDIR /megplus
-RUN CHMOD 777 megplus.sh
+RUN chmod 777 megplus.sh
 RUN git clone https://github.com/aboul3la/Sublist3r.git
 
 ENTRYPOINT ["./megplus.sh"]
