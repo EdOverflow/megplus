@@ -1,3 +1,4 @@
+#!/bin/bash
 ./megplus.sh
 echo "reddit.com" > domains
 ./megplus.sh domains

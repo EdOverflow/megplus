@@ -2,7 +2,6 @@
 
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
-RED='\033[0;31m'
 CYAN='\033[0;36m'
 END='\033[0m'
 
@@ -17,7 +16,7 @@ if [[ $1 == '' ]] || [[ $1 == '-h' ]] || [[ $1 == '--help' ]]; then
 	exit 1
 fi
 
-echo -e """${CYAN}                                            
+echo -e """${CYAN}                                          
                                                                           
    88888b.d88b.   .d88b.   .d88b.    888   
    888  888  88b d8P  Y8b d88P 88b 8888888 
@@ -34,9 +33,9 @@ QUOTES=(
 	"Activating 1337 mode!"
 	"Target uses Equifax-grade security."
 	"ᕕ( ᐛ )ᕗ"
-    "ᕕ( ᐕ )ᕗ"
-    "三三ᕕ( ᐛ )ᕗ"
-    "ᐠ( ᐛ )ᐟ"
+	"ᕕ( ᐕ )ᕗ"
+	"三三ᕕ( ᐛ )ᕗ"
+	"ᐠ( ᐛ )ᐟ"
 	"Never gonna give you up."
 	"Bounty pls."
 	"Update pls."
@@ -48,11 +47,11 @@ QUOTES=(
 	"You hack people. I hack time."
 	"I hope you don't screw like you type."
 	"Hack the planet!"
-    "Crypto stands for cryptography."
-    "PoC||GTFO"
+	"Crypto stands for cryptography."
+	"PoC||GTFO"
 )
 
-rand=$[RANDOM % ${#QUOTES[@]}]
+rand=$((RANDOM % ${#QUOTES[@]}))
 printf "${YELLOW}[i]${END} ${QUOTES[$rand]}\\n"
 echo
 
@@ -64,29 +63,29 @@ fi
 
 if [[ $1 == '-x' ]] && [[ $2 != '' ]]; then
 	printf "${GREEN}[+]${END} Fetching all in-scope targets.\\n"
-	php fetch.php $2 > temp
+	php fetch.php "$2" > temp
 	cat temp | sed -E 's#https?://##I' | sed -E 's#/.*##' | sed -E 's#^\*\.?##' | sed -E 's#,#\n#g' | tr '[:upper:]' '[:lower:]' | uniq | sed -e 's/^/https:\/\//' > domains-plus
 	targets="domains-plus"
 	# gio trash temp
 elif [[ $1 == '-s' ]] && [[ $2 != '' ]]; then
 	printf "${GREEN}[+]${END} Running Sublist3r against $2.\\n"
 	# Set Sublist3r path here!
-	python Sublist3r/sublist3r.py -d $2 -o domains-sub > /dev/null
-	while read domain; do 
+	python Sublist3r/sublist3r.py -d "$2" -o domains-sub > /dev/null
+	while read -r domain; do 
 		if host "$domain" > /dev/null; then 
-			echo $domain; 
+			echo "$domain"; 
 		fi;
 	done < domains-sub >> output
 	cat output | sed -E 's#https?://##I' | sed -E 's#/.*##' | sed -E 's#^\*\.?##' | sed -E 's#,#\n#g' | tr '[:upper:]' '[:lower:]' | uniq | sed -e 's/^/https:\/\//' > domains-plus
 	targets="domains-plus"
 	echo
 else
-	cat $1 | sed -E 's#https?://##I' | sed -E 's#/.*##' | sed -E 's#^\*\.?##' | sed -E 's#,#\n#g' | tr '[:upper:]' '[:lower:]' | uniq | sed -e 's/^/https:\/\//' > "$1-plus"
+	cat "$1"" | sed "-E 's#https?://##I' | sed -E 's#/.*##' | sed -E 's#^\*\.?##' | sed -E 's#,#\n#g' | tr '[:upper:]' '[:lower:]' | uniq | sed -e 's/^/https:\/\//' > "$1-plus"
 	targets="$1-plus"
 fi
 
 printf "${GREEN}[+]${END} Finding configuration files.\\n"
-meg --delay 100 lists/configfiles $targets &>/dev/null
+meg --delay 100 lists/configfiles "$targets" &>/dev/null
 grep -Hnri "200 ok" out/
 echo
 
@@ -99,21 +98,21 @@ printf "${GREEN}[+]${END} Finding AWS/DigitalOcean/Azure buckets.\\n"
 echo
 
 printf "${GREEN}[+]${END} Finding open redirects.\\n"
-meg --delay 100 lists/openredirects $targets &>/dev/null
+meg --delay 100 lists/openredirects "$targets" &>/dev/null
 grep --color -HnriE '< location: (https?:)?[/\\]{2,}example.com' out/
 echo
 
 printf "${GREEN}[+]${END} Finding CRLF injection.\\n"
-meg --delay 100 lists/crlfinjection $targets &>/dev/null
+meg --delay 100 lists/crlfinjection "$targets" &>/dev/null
 grep --color -HnriE "< Set-Cookie: ?crlf"
 echo
 
 printf "${GREEN}[+]${END} Finding CORS misconfigurations.\\n"
-./cors.sh $targets
+./cors.sh "$targets"
 echo
 
 printf "${GREEN}[+]${END} Finding path-based XSS.\\n"
-meg /bounty%3c%22pls $targets
+meg /bounty%3c%22pls "$targets"
 grep --color -Hrie '(bounty<|"pls)' out/
 echo
 
@@ -122,7 +121,7 @@ printf "${GREEN}[+]${END} Searching for (sub)domain takeovers.\\n"
 echo
 
 printf "${GREEN}[+]${END} Running waybackurls.\\n"
-cat $targets | waybackurls > out/urls
+cat "$targets" | waybackurls > out/urls
 printf "${YELLOW}[i]${END} Output in './out/urls' file.\\n"
 echo
 
