@@ -1,4 +1,4 @@
-# meg+
+# meg+ [Deprecated]
 
 Automated reconnaissance wrapper — [TomNomNom's](https://github.com/TomNomNom) [meg](https://github.com/tomnomnom/meg) on steroids.
 
